@@ -4,61 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simple Chatbot</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 500px;
-    margin: 50px auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.chat-box {
-    height: 300px;
-    overflow-y: scroll;
-    padding: 10px;
-}
-
-.chat-input {
-    width: calc(100% - 20px);
-    padding: 5px;
-    margin: 0 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.btn-send {
-    padding: 5px 10px;
-    margin: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.bot-message {
-    background-color: #f2f2f2;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 5px 0;
-}
-
-.user-message {
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin: 5px 0;
-    text-align: right;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
@@ -68,48 +14,7 @@ body {
     <button class="btn-send" onclick="sendMessage()">Send</button>
 </div>
 
-<script>
-function sendMessage() {
-    var userInput = document.getElementById("userInput").value;
-    var chatBox = document.getElementById("chatBox");
-
-    // Display user message
-    var userMessageElement = document.createElement("div");
-    userMessageElement.classList.add("user-message");
-    userMessageElement.textContent = userInput;
-    chatBox.appendChild(userMessageElement);
-
-    // Get bot response
-    var botResponse = getBotResponse(userInput);
-
-    // Display bot message
-    var botMessageElement = document.createElement("div");
-    botMessageElement.classList.add("bot-message");
-    botMessageElement.textContent = botResponse;
-    chatBox.appendChild(botMessageElement);
-
-    // Clear input
-    document.getElementById("userInput").value = "";
-
-    // Scroll to bottom
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-function getBotResponse(userInput) {
-    var botResponse;
-    userInput = userInput.toLowerCase();
-
-    if (userInput.includes("hello")) {
-        botResponse = "Bot: Hello there!";
-    } else if (userInput.includes("bye")) {
-        botResponse = "Bot: Goodbye!";
-    } else {
-        botResponse = "Bot: I received your message - '" + userInput + "'";
-    }
-
-    return botResponse;
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
