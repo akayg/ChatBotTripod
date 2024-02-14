@@ -1,5 +1,4 @@
-
-function sendMessage() {
+function sendMessage(option) {
     var userInput = document.getElementById("userInput").value;
     var chatBox = document.getElementById("chatBox");
 
@@ -10,7 +9,18 @@ function sendMessage() {
     chatBox.appendChild(userMessageElement);
 
     // Get bot response
-    var botResponse = getBotResponse(userInput);
+    var botResponse;
+    if (option === "Option One") {
+        botResponse = { message: "hey you" };
+    } else if (option === "Option Two") {
+        botResponse = { message: "hey me" };
+    } 
+    else if (option === "Opt3"){
+        botResponse={ message:"Seed"}
+    }
+    else  {
+        botResponse = getBotResponse(userInput);
+    }
 
     // Display bot message
     var botMessageElement = document.createElement("div");
@@ -47,7 +57,7 @@ function getBotResponse(userInput) {
 
     if (userInput.includes("hello")) {
         botResponse.message = "Bot: Hello there!";
-        botResponse.options = ["Option One", "Option Two"];
+        botResponse.options = ["Option One", "Option Two","Opt3"];
     } else if (userInput.includes("bye")) {
         botResponse.message = "Bot: Goodbye!";
     } else {
@@ -56,3 +66,10 @@ function getBotResponse(userInput) {
 
     return botResponse;
 }
+
+// Optional: This part assumes you have HTML elements with IDs "userInput" and "chatBox"
+// and attaches the function to a button click event.
+
+document.getElementById("sendButton").addEventListener("click", function() {
+    sendMessage();
+});

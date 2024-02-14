@@ -52,9 +52,8 @@ body {
     margin: 5px 0;
     text-align: right;
 }
-
 .option-btn {
-    display: inline-block;
+ display: inline-block;
     padding: 5px 10px;
     margin: 5px;
     background-color: #007bff;
@@ -62,4 +61,5 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
 }
