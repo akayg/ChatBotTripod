@@ -24,16 +24,39 @@ const handleOutgoingChat = (response) => {
                             <button class="chat-btn" data-response="abk">abk</button>
                             <button class="chat-btn" data-response="bcd">bcd</button>
                         </div>
-                    </div>`
-                    ;
-    } else if (userText === "abk" || userText === "bcd") {
+                    </div>`;
+    } else if (userText === "abk") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="images/chatbot.jpg" alt="chatbot-img">
                             <p>Thank you!</p>
+                            <button class="chat-btn" data-response="pdf">pdf</button>
                         </div>
                     </div>`;
-    } else {
+    } else if (userText === "bcd") {
+        botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="images/chatbot.jpg" alt="chatbot-img">
+                            <p>Thank</p>
+                        </div>
+                    </div>`;
+    } else if (userText === "pdf") {
+        botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="images/chatbot.jpg" alt="chatbot-img">
+                            <button class="chat-btn" data-response="pdfm">pdfm</button>
+                            <p>pdf</p>
+                        </div>
+                    </div>`;
+    } 
+    else if (userText === "pdfm") {
+        botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="images/chatbot.jpg" alt="chatbot-img">
+                            <p>pdfm</p>
+                        </div>
+                    </div>`;
+    }else {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="images/chatbot.jpg" alt="chatbot-img">
@@ -59,15 +82,13 @@ const handleOutgoingChat = (response) => {
     chatContainer.appendChild(botChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
 
-    if (userText === "hello") {
-        const buttons = botChatDiv.querySelectorAll('.chat-btn');
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const buttonText = button.getAttribute('data-response');
-                handleOutgoingChat(buttonText);
-            });
+    const buttons = botChatDiv.querySelectorAll('.chat-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const buttonText = button.getAttribute('data-response');
+            handleOutgoingChat(buttonText);
         });
-    }
+    });
 };
 
 sendButton.addEventListener("click", () => handleOutgoingChat());
