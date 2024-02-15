@@ -1,75 +1,78 @@
-function sendMessage(option) {
-    var userInput = document.getElementById("userInput").value;
-    var chatBox = document.getElementById("chatBox");
+const chatInput = document.querySelector(".typing-textarea textarea");
+const sendButton = document.querySelector(".typing-content span");
+const chatContainer = document.querySelector(".chat-container");
 
-    // Display user message
-    var userMessageElement = document.createElement("div");
-    userMessageElement.classList.add("user-message");
-    userMessageElement.textContent = userInput;
-    chatBox.appendChild(userMessageElement);
+const createChatElement = (content, className) => {
+    const chatDiv = document.createElement("div");
+    chatDiv.classList.add("chat", className);
+    chatDiv.innerHTML = content;
+    return chatDiv;
+};
 
-    // Get bot response
-    var botResponse;
-    if (option === "Option One") {
-        botResponse = { message: "hey you" };
-    } else if (option === "Option Two") {
-        botResponse = { message: "hey me" };
-    } 
-    else if (option === "Opt3"){
-        botResponse={ message:"Seed"}
-    }
-    else  {
-        botResponse = getBotResponse(userInput);
-    }
+const handleOutgoingChat = () => {
+    const userText = chatInput.value.trim().toLowerCase();
+    if (!userText) return;
 
-    // Display bot message
-    var botMessageElement = document.createElement("div");
-    botMessageElement.classList.add("bot-message");
-    botMessageElement.textContent = botResponse.message;
-    chatBox.appendChild(botMessageElement);
+    chatInput.value = "";
 
-    // If bot response has options, display buttons
-    if (botResponse.options) {
-        var optionsDiv = document.createElement("div");
-        for (var i = 0; i < botResponse.options.length; i++) {
-            var optionBtn = document.createElement("button");
-            optionBtn.textContent = botResponse.options[i];
-            optionBtn.classList.add("option-btn");
-            optionBtn.setAttribute("onclick", "sendMessage('" + botResponse.options[i] + "')");
-            optionsDiv.appendChild(optionBtn);
-        }
-        chatBox.appendChild(optionsDiv);
-    }
-
-    // Clear input
-    document.getElementById("userInput").value = "";
-
-    // Scroll to bottom
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-function getBotResponse(userInput) {
-    var botResponse = {
-        message: "",
-        options: null
-    };
-    userInput = userInput.toLowerCase();
-
-    if (userInput.includes("hello")) {
-        botResponse.message = "Bot: Hello there!";
-        botResponse.options = ["Option One", "Option Two","Opt3"];
-    } else if (userInput.includes("bye")) {
-        botResponse.message = "Bot: Goodbye!";
+    let response;
+    if (userText === "hello") {
+        response = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="images/chatbot.jpg" alt="chatbot-img">
+                            <p>Choose one:</p>
+                            <button class="chat-btn" data-response="abk">abk</button>
+                            <button class="chat-btn" data-response="bcd">bcd</button>
+                        </div>
+                    </div>`;
+    } else if (userText === "abk" || userText === "bcd") {
+        response = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="images/chatbot.jpg" alt="chatbot-img">
+                            <p>Thank you!</p>
+                        </div>
+                    </div>`;
     } else {
-        botResponse.message = "Bot: I received your message - '" + userInput + "'";
+        response = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="images/chatbot.jpg" alt="chatbot-img">
+                            <p>I'm sorry, I didn't understand that.</p>
+                        </div>
+                    </div>`;
     }
 
-    return botResponse;
-}
+    const userChatHtml = `<div class="chat-content">
+                            <div class="chat-details">
+                                <img src="images/user.jpg" alt="user-img">
+                                <p>${userText}</p>
+                            </div>
+                        </div>`;
 
-// Optional: This part assumes you have HTML elements with IDs "userInput" and "chatBox"
-// and attaches the function to a button click event.
+    const botChatHtml = response;
 
-document.getElementById("sendButton").addEventListener("click", function() {
-    sendMessage();
+    const userChatDiv = createChatElement(userChatHtml, "outgoing");
+    const botChatDiv = createChatElement(botChatHtml, "incoming");
+
+    chatContainer.querySelector(".default-text")?.remove();
+    chatContainer.appendChild(userChatDiv);
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    if (userText === "hello") {
+        const buttons = botChatDiv.querySelectorAll('.chat-btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const buttonText = button.getAttribute('data-response');
+                handleOutgoingChat(buttonText);
+            });
+        });
+    }
+};
+
+sendButton.addEventListener("click", handleOutgoingChat);
+chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        handleOutgoingChat();
+    }
 });

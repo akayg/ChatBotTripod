@@ -256,3 +256,18 @@ span.material-symbols-rounded {
     font-size: 1.25rem!important;
   }
 }
+/* Button styling */
+.chat-btn {
+  padding: 8px 16px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0eaa13;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.chat-btn:hover {
+  background-color: #000000;
+}
