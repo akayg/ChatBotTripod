@@ -87,23 +87,47 @@ const handleOutgoingChat = (response) => {
                             <p>Thank</p>
                         </div>
                     </div>`;
-    } else if (userText === "pdf") {
-        botResponse = `<div class="chat-content">
-                        <div class="chat-details">
-                            <img src="botimg.png" alt="chatbot-img">
-                            <button class="chat-btn" data-response="pdfm">pdfm</button>
-                            <p>pdf</p>
-                        </div>
-                    </div>`;
     } 
-    else if (userText === "pdfm") {
+    /*else if (userText === "pdf") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
-                            <p>pdfm</p>
+                            <p>ok</p>
+                            <button class="chat-btn" data-response="pdfm">pdfm</button>
                         </div>
                     </div>`;
-    }else {
+    } */
+   else     if (response === "pdf") {
+    botResponse = `<div class="chat-content">
+                    <div class="chat-details">
+                        <img src="botimg.png" alt="chatbot-img">
+                        <p>Click the button to download the file.</p>
+                        <button class="chat-btn" data-response="pdfm">Download File</button>
+                    </div>
+                </div>`;
+}
+
+
+
+
+
+
+
+    else if (response === "pdfm") {
+        // Create an anchor element for initiating the download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'sheetcheat.pdf'; // File path to the PDF file
+        downloadLink.download = 'sheetcheat.pdf'; // Name of the file to be downloaded
+        downloadLink.style.display = 'none'; // Hide the link
+
+        // Append the anchor element to the document body and trigger the click event
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+
+        // Clean up: Remove the anchor element
+        document.body.removeChild(downloadLink);
+    }
+    else {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
