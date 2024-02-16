@@ -85,6 +85,7 @@ const handleOutgoingChat = (response) => {
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
                             <p>Thank</p>
+                            <button class="chat-btn" data-response="pdm">Download File</button>
                         </div>
                     </div>`;
     } 
@@ -109,7 +110,23 @@ const handleOutgoingChat = (response) => {
 
 
 
+else if (response === "pdm") {
+    // Create an anchor element for initiating the download
+    const downloadLink = document.createElement('a');
+    downloadLink.href = 'sheetcheat.pdf'; // File path to the PDF file
+    downloadLink.download = 'sheetcheat.pdf'; // Name of the file to be downloaded
+    downloadLink.target = '_blank'; // Open in a new page
+    downloadLink.style.display = 'none'; // Hide the link
 
+    // Append the anchor element to the document body and trigger the click event
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+
+    document.body.removeChild(downloadLink);
+
+    // Prevent default behavior of the button click (e.g., form submission)
+    return false;
+}
 
 
 
@@ -118,14 +135,17 @@ const handleOutgoingChat = (response) => {
         const downloadLink = document.createElement('a');
         downloadLink.href = 'sheetcheat.pdf'; // File path to the PDF file
         downloadLink.download = 'sheetcheat.pdf'; // Name of the file to be downloaded
+        downloadLink.target = '_blank'; // Open in a new page
         downloadLink.style.display = 'none'; // Hide the link
 
         // Append the anchor element to the document body and trigger the click event
         document.body.appendChild(downloadLink);
         downloadLink.click();
 
-        // Clean up: Remove the anchor element
         document.body.removeChild(downloadLink);
+
+        // Prevent default behavior of the button click (e.g., form submission)
+        return false;
     }
     else {
         botResponse = `<div class="chat-content">
