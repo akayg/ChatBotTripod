@@ -16,8 +16,14 @@ const loadDataFromLocalStorage = () => {
     const defaultText = `<div class="default-text">
                             <h1> Tripod</h1>
                             <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
-                        </div>`;
+                        </div>`
+                        chatInput.value = "Show menu";
+                            // Check if it's the first time the user is visiting the page
+    
+        
+    
 
+    // Store the first visit indicator in local storage
     chatContainer.innerHTML = localStorage.getItem("all-chats") || defaultText;
     chatContainer.scrollTo(0, chatContainer.scrollHeight); // Scroll to bottom of the chat container
 };
@@ -56,6 +62,7 @@ const createChatElement = (content, className) => {
     return chatDiv;
 };
 
+
 const handleOutgoingChat = (response) => {
     const userText = response ? response.trim().toLowerCase() : chatInput.value.trim().toLowerCase();
     if (!userText) return;
@@ -63,24 +70,29 @@ const handleOutgoingChat = (response) => {
     chatInput.value = "";
 
     let botResponse;
-    if (userText === "hello") {
+
+// Check if the user input matches any greeting
+    const greetings = ["hello", "hey", "hi","show menu"];
+
+    
+    if (greetings.includes(userText)) {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
-                            <p>Choose one:</p>
-                            <button class="chat-btn" data-response="abk">abk</button>
-                            <button class="chat-btn" data-response="bcd">bcd</button>
+                            <p>Choose option</p>
+                            <button class="chat-btn" data-response="notes">Notes</button>
+                            <button class="chat-btn" data-response="Question paper">Question Papers</button>
                         </div>
                     </div>`;
-    } else if (userText === "abk") {
+    } else if (userText === "notes") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
-                            <p>Thank you!</p>
+                            <p>Notes</p>
                             <button class="chat-btn" data-response="pdf">pdf</button>
                         </div>
                     </div>`;
-    } else if (userText === "bcd") {
+    } else if (userText === "question paper") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
@@ -89,15 +101,6 @@ const handleOutgoingChat = (response) => {
                         </div>
                     </div>`;
     } 
-    /*else if (userText === "pdf") {
-        botResponse = `<div class="chat-content">
-                        <div class="chat-details">
-                            <img src="botimg.png" alt="chatbot-img">
-                            <p>ok</p>
-                            <button class="chat-btn" data-response="pdfm">pdfm</button>
-                        </div>
-                    </div>`;
-    } */
    else     if (response === "pdf") {
     botResponse = `<div class="chat-content">
                     <div class="chat-details">
@@ -127,9 +130,6 @@ else if (response === "pdm") {
     // Prevent default behavior of the button click (e.g., form submission)
     return false;
 }
-
-
-
     else if (response === "pdfm") {
         // Create an anchor element for initiating the download
         const downloadLink = document.createElement('a');
