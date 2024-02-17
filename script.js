@@ -88,7 +88,7 @@ const handleOutgoingChat = (response) => {
         botResponse = `<div class="chat-content">
         <div class="chat-details">
             <img src="botimg.png" alt="chatbot-img">
-            <p>Select semester</p>
+            <div>Select semester</div>
             <div class="button-grid">
                 <button class="chat-btn" data-response="pdf">CSE 1</button>
                 <button class="chat-btn" data-response="pdf">CSE 2</button>
@@ -96,12 +96,11 @@ const handleOutgoingChat = (response) => {
                 <button class="chat-btn" data-response="pdf">CSE 4</button>
                 <button class="chat-btn" data-response="pdf">CSE 5</button>
                 <button class="chat-btn" data-response="pdf">CSE 6</button>
-                <button class="chat-btn" data-response="pdf">CSE 7</button>
             </div>
         </div>
-    </div>
-    `;
-    } else if (userText === "question paper") {
+    </div>`;
+    }
+    else if (userText === "question paper") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
@@ -110,7 +109,7 @@ const handleOutgoingChat = (response) => {
                         </div>
                     </div>`;
     } 
-   else     if (response === "pdf") {
+   else if (response === "pdf") {
     botResponse = `<div class="chat-content">
                     <div class="chat-details">
                         <img src="botimg.png" alt="chatbot-img">
@@ -122,23 +121,31 @@ const handleOutgoingChat = (response) => {
 
 
 
-else if (response === "pdm") {
-    // Create an anchor element for initiating the download
-    const downloadLink = document.createElement('a');
-    downloadLink.href = 'sheetcheat.pdf'; // File path to the PDF file
-    downloadLink.download = 'sheetcheat.pdf'; // Name of the file to be downloaded
-    downloadLink.target = '_blank'; // Open in a new page
-    downloadLink.style.display = 'none'; // Hide the link
+else if (response === "pdfm") {
+    // Array of file paths to download
+    const fileUrls = ['https://education.github.com/git-cheat-sheet-education.pdf', 'https://www.customguide.com/cheat-sheet/excel-cheat-sheet.pdf', 'https://html.com/wp-content/uploads/html-cheat-sheet.pdf'];
 
-    // Append the anchor element to the document body and trigger the click event
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
+    // Iterate over each file URL
+    fileUrls.forEach((url, index) => {
+        // Create an anchor element for initiating the download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url; // Set the file path
+        downloadLink.download = `sheetcheat${index + 1}.pdf`; // Name the downloaded file
+        downloadLink.target = '_blank'; // Open in a new page
+        downloadLink.style.display = 'none'; // Hide the link
 
-    document.body.removeChild(downloadLink);
+        // Append the anchor element to the document body and trigger the click event
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+
+        // Remove the anchor element from the document body after the download is initiated
+        document.body.removeChild(downloadLink);
+    });
 
     // Prevent default behavior of the button click (e.g., form submission)
     return false;
 }
+
     else if (response === "pdfm") {
         // Create an anchor element for initiating the download
         const downloadLink = document.createElement('a');
@@ -163,7 +170,7 @@ else if (response === "pdm") {
                             </div>
                     </div>`;
     }
-    const userChatHtml = `<div class="chat-content">
+  const userChatHtml = `<div class="chat-content">
                             <div class="chat-details">
                                 <img src="userimg.png" alt="user-img">
                                 <p>${userText}</p>
