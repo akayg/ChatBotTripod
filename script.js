@@ -86,18 +86,21 @@ const handleOutgoingChat = (response) => {
                     </div>`;
     } else if (userText === "notes") {
         botResponse = `<div class="chat-content">
-                        <div class="chat-details">
-                            <img src="botimg.png" alt="chatbot-img">
-                            <p>Select semester</p>
-                            <button class="chat-btn" data-response="pdf">CSE 1</button>
-                            <button class="chat-btn" data-response="pdf">CSE 2</button>
-                            <button class="chat-btn" data-response="pdf">CSE 3</button>
-                            <button class="chat-btn" data-response="pdf">CSE 4</button>
-                            <button class="chat-btn" data-response="pdf">CSE 5</button>
-                            <button class="chat-btn" data-response="pdf">CSE 6</button>
-                            <button class="chat-btn" data-response="pdf">CSE 7</button>
-                        </div>
-                    </div>`;
+        <div class="chat-details">
+            <img src="botimg.png" alt="chatbot-img">
+            <p>Select semester</p>
+            <div class="button-grid">
+                <button class="chat-btn" data-response="pdf">CSE 1</button>
+                <button class="chat-btn" data-response="pdf">CSE 2</button>
+                <button class="chat-btn" data-response="pdf">CSE 3</button>
+                <button class="chat-btn" data-response="pdf">CSE 4</button>
+                <button class="chat-btn" data-response="pdf">CSE 5</button>
+                <button class="chat-btn" data-response="pdf">CSE 6</button>
+                <button class="chat-btn" data-response="pdf">CSE 7</button>
+            </div>
+        </div>
+    </div>
+    `;
     } else if (userText === "question paper") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
