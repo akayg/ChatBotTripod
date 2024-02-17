@@ -120,33 +120,53 @@ const handleOutgoingChat = (response) => {
 }
 
 
-
 else if (response === "pdfm") {
-    // Array of file paths to download
-    const fileUrls = ['https://education.github.com/git-cheat-sheet-education.pdf', 'https://www.customguide.com/cheat-sheet/excel-cheat-sheet.pdf', 'https://html.com/wp-content/uploads/html-cheat-sheet.pdf'];
+    // Define the file options
+    const fileOptions = [
+        { name: "Cheat Sheet 1", url: "https://example.com/page1" },
+        { name: "Cheat Sheet 2", url: "https://example.com/page2" },
+        { name: "Cheat Sheet 3", url: "https://example.com/page3" }
+    ];
 
-    // Iterate over each file URL
-    fileUrls.forEach((url, index) => {
-        // Create an anchor element for initiating the download
-        const downloadLink = document.createElement('a');
-        downloadLink.href = url; // Set the file path
-        downloadLink.download = `sheetcheat${index + 1}.pdf`; // Name the downloaded file
-        downloadLink.target = '_blank'; // Open in a new page
-        downloadLink.style.display = 'none'; // Hide the link
+    // Build the HTML for the file options
+    let optionsHtml = "<p>Select a file to download:</p>";
+    optionsHtml += '<select id="fileSelect">';
+    fileOptions.forEach((file, index) => {
+        optionsHtml += `<option value="${file.url}">${file.name}</option>`;
+    });
+    optionsHtml += '</select>';
 
-        // Append the anchor element to the document body and trigger the click event
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
+    // Display the file options in the chat
+    botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="botimg.png" alt="chatbot-img">
+                            ${optionsHtml}
+                            <button id="downloadBtn">Download</button>
+                        </div>
+                    </div>`;
 
-        // Remove the anchor element from the document body after the download is initiated
-        document.body.removeChild(downloadLink);
+    // Update the chat container
+    const botChatDiv = createChatElement(botResponse, "incoming");
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    // Add event listener to the download button
+    const downloadBtn = botChatDiv.querySelector('#downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+        const select = botChatDiv.querySelector('#fileSelect');
+        const fileUrl = select.options[select.selectedIndex].value;
+        window.open(fileUrl, '_blank');  // Redirect user to the selected URL
     });
 
     // Prevent default behavior of the button click (e.g., form submission)
     return false;
 }
 
-    else if (response === "pdfm") {
+
+
+
+
+    else if (response === "pd") {
         // Create an anchor element for initiating the download
         const downloadLink = document.createElement('a');
         downloadLink.href = 'sheetcheat.pdf'; // File path to the PDF file
