@@ -72,7 +72,7 @@ const handleOutgoingChat = (response) => {
     let botResponse;
 
 // Check if the user input matches any greeting
-    const greetings = ["hello", "hey", "hi","show menu"];
+    const greetings = ["hello", "hey", "hi","hy","show menu"];
 
     
     if (greetings.includes(userText)) {
@@ -88,8 +88,14 @@ const handleOutgoingChat = (response) => {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
-                            <p>Notes</p>
-                            <button class="chat-btn" data-response="pdf">pdf</button>
+                            <p>Select semester</p>
+                            <button class="chat-btn" data-response="pdf">CSE 1</button>
+                            <button class="chat-btn" data-response="pdf">CSE 2</button>
+                            <button class="chat-btn" data-response="pdf">CSE 3</button>
+                            <button class="chat-btn" data-response="pdf">CSE 4</button>
+                            <button class="chat-btn" data-response="pdf">CSE 5</button>
+                            <button class="chat-btn" data-response="pdf">CSE 6</button>
+                            <button class="chat-btn" data-response="pdf">CSE 7</button>
                         </div>
                     </div>`;
     } else if (userText === "question paper") {
@@ -137,11 +143,9 @@ else if (response === "pdm") {
         downloadLink.download = 'sheetcheat.pdf'; // Name of the file to be downloaded
         downloadLink.target = '_blank'; // Open in a new page
         downloadLink.style.display = 'none'; // Hide the link
-
         // Append the anchor element to the document body and trigger the click event
         document.body.appendChild(downloadLink);
         downloadLink.click();
-
         document.body.removeChild(downloadLink);
 
         // Prevent default behavior of the button click (e.g., form submission)
@@ -152,10 +156,10 @@ else if (response === "pdm") {
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
                             <p>I'm sorry, I didn't understand that.</p>
-                        </div>
+                            <button class="chat-btn" data-response="show menu">SHOW MENU </button>
+                            </div>
                     </div>`;
     }
-
     const userChatHtml = `<div class="chat-content">
                             <div class="chat-details">
                                 <img src="userimg.png" alt="user-img">
@@ -180,6 +184,7 @@ else if (response === "pdm") {
             handleOutgoingChat(buttonText);
         });
     });
+
 };
 
 sendButton.addEventListener("click", () => handleOutgoingChat());
