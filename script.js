@@ -200,7 +200,7 @@ else if (response === "CSE3") {
     // Define the file options
     const fileOptions = [
         {  name: "MATH-3", url: "https://example.com/page3"},
-        { name: "D.Electronics", url: "https://example.com/page1" },
+        { name: "D.E", url: "https://example.com/page1" },
         { name: "O.O.Programming", url: "https://example.com/page2" },
         {name : "D.S.A", url: "https:urlhere.com"},
         {name : "Dev. of societies", url: "https:urlhere.com"}
@@ -244,7 +244,7 @@ else if (response === "CSE3") {
 else if (response === "CSE4") {
     // Define the file options
     const fileOptions = [
-        {  name: "Discrete Mathematics", url: "https://example.com/page3"},
+        {  name: "D.Maths", url: "https://example.com/page3"},
         { name: "C.O.A", url: "https://example.com/page1" },
         { name: "O.S", url: "https://example.com/page2" },
         {name : "U.H.V", url: "https:urlhere.com"}
