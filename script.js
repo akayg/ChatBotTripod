@@ -88,44 +88,34 @@ const handleOutgoingChat = (response) => {
         botResponse = `<div class="chat-content">
         <div class="chat-details">
             <img src="botimg.png" alt="chatbot-img">
-            <div>Select semester</div>
-            <div class="button-grid">
-                <button class="chat-btn" data-response="pdf">CSE 1</button>
-                <button class="chat-btn" data-response="pdf">CSE 2</button>
-                <button class="chat-btn" data-response="pdf">CSE 3</button>
-                <button class="chat-btn" data-response="pdf">CSE 4</button>
-                <button class="chat-btn" data-response="pdf">CSE 5</button>
-                <button class="chat-btn" data-response="pdf">CSE 6</button>
-            </div>
-        </div>
-    </div>`;
+            <p>ADDING SOON</p></div>`;
     }
     else if (userText === "question paper") {
         botResponse = `<div class="chat-content">
                         <div class="chat-details">
                             <img src="botimg.png" alt="chatbot-img">
-                            <p>Thank</p>
-                            <button class="chat-btn" data-response="pdm">Download File</button>
-                        </div>
+                            <div>Select semester</div>
+                            <div class="button-grid">
+                                <button class="chat-btn" data-response="CSE1">CSE 1</button>
+                                <button class="chat-btn" data-response="CSE2">CSE 2</button>
+                                <button class="chat-btn" data-response="CSE3">CSE 3</button>
+                                <button class="chat-btn" data-response="CSE4">CSE 4</button>
+                                <button class="chat-btn" data-response="CSE5">CSE 5</button>
+                                <button class="chat-btn" data-response="CSE6">CSE 6</button>
+                            </div>
+                            </div>
+                           </div>
                     </div>`;
     } 
-   else if (response === "pdf") {
-    botResponse = `<div class="chat-content">
-                    <div class="chat-details">
-                        <img src="botimg.png" alt="chatbot-img">
-                        <p>Click the button to download the file.</p>
-                        <button class="chat-btn" data-response="pdfm">Download File</button>
-                    </div>
-                </div>`;
-}
 
-
-else if (response === "pdfm") {
+else if (response === "CSE1") {
     // Define the file options
     const fileOptions = [
-        { name: "Cheat Sheet 1", url: "https://example.com/page1" },
-        { name: "Cheat Sheet 2", url: "https://example.com/page2" },
-        { name: "Cheat Sheet 3", url: "https://example.com/page3" }
+        {  name: "MATH-1", url: "https://example.com/page3"},
+        { name: "SEM.PHYSICS", url: "https://example.com/page1" },
+        { name: "BEE", url: "https://example.com/page2" },
+        {name : "E.design", url: "https:urlhere.com"}
+        
     ];
 
     // Build the HTML for the file options
@@ -161,6 +151,228 @@ else if (response === "pdfm") {
     // Prevent default behavior of the button click (e.g., form submission)
     return false;
 }
+
+else if (response === "CSE2") {
+    // Define the file options
+    const fileOptions = [
+        {  name: "MATH-2", url: "https://example.com/page3"},
+        { name: "Chemistry-2", url: "https://example.com/page1" },
+        { name: "PPS", url: "https://example.com/page2" },
+        {name : "English", url: "https:urlhere.com"}
+        
+    ];
+
+    // Build the HTML for the file options
+    let optionsHtml = "<p>Select a file to download:</p>";
+    optionsHtml += '<select id="fileSelect">';
+    fileOptions.forEach((file, index) => {
+        optionsHtml += `<option value="${file.url}">${file.name}</option>`;
+    });
+    optionsHtml += '</select>';
+
+    // Display the file options in the chat
+    botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="botimg.png" alt="chatbot-img">
+                            ${optionsHtml}
+                            <button id="downloadBtn">Download</button>
+                        </div>
+                    </div>`;
+
+    // Update the chat container
+    const botChatDiv = createChatElement(botResponse, "incoming");
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    // Add event listener to the download button
+    const downloadBtn = botChatDiv.querySelector('#downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+        const select = botChatDiv.querySelector('#fileSelect');
+        const fileUrl = select.options[select.selectedIndex].value;
+        window.open(fileUrl, '_blank');  // Redirect user to the selected URL
+    });
+
+    // Prevent default behavior of the button click (e.g., form submission)
+    return false;
+}
+
+else if (response === "CSE3") {
+    // Define the file options
+    const fileOptions = [
+        {  name: "MATH-3", url: "https://example.com/page3"},
+        { name: "D.Electronics", url: "https://example.com/page1" },
+        { name: "O.O.Programming", url: "https://example.com/page2" },
+        {name : "D.S.A", url: "https:urlhere.com"},
+        {name : "Dev. of societies", url: "https:urlhere.com"}
+        
+    ];
+
+    // Build the HTML for the file options
+    let optionsHtml = "<p>Select a file to download:</p>";
+    optionsHtml += '<select id="fileSelect">';
+    fileOptions.forEach((file, index) => {
+        optionsHtml += `<option value="${file.url}">${file.name}</option>`;
+    });
+    optionsHtml += '</select>';
+
+    // Display the file options in the chat
+    botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="botimg.png" alt="chatbot-img">
+                            ${optionsHtml}
+                            <button id="downloadBtn">Download</button>
+                        </div>
+                    </div>`;
+
+    // Update the chat container
+    const botChatDiv = createChatElement(botResponse, "incoming");
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    // Add event listener to the download button
+    const downloadBtn = botChatDiv.querySelector('#downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+        const select = botChatDiv.querySelector('#fileSelect');
+        const fileUrl = select.options[select.selectedIndex].value;
+        window.open(fileUrl, '_blank');  // Redirect user to the selected URL
+    });
+
+    // Prevent default behavior of the button click (e.g., form submission)
+    return false;
+}
+
+else if (response === "CSE4") {
+    // Define the file options
+    const fileOptions = [
+        {  name: "Discrete Mathematics", url: "https://example.com/page3"},
+        { name: "C.O.A", url: "https://example.com/page1" },
+        { name: "O.S", url: "https://example.com/page2" },
+        {name : "U.H.V", url: "https:urlhere.com"}
+        
+    ];
+
+    // Build the HTML for the file options
+    let optionsHtml = "<p>Select a file to download:</p>";
+    optionsHtml += '<select id="fileSelect">';
+    fileOptions.forEach((file, index) => {
+        optionsHtml += `<option value="${file.url}">${file.name}</option>`;
+    });
+    optionsHtml += '</select>';
+
+    // Display the file options in the chat
+    botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="botimg.png" alt="chatbot-img">
+                            ${optionsHtml}
+                            <button id="downloadBtn">Download</button>
+                        </div>
+                    </div>`;
+
+    // Update the chat container
+    const botChatDiv = createChatElement(botResponse, "incoming");
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    // Add event listener to the download button
+    const downloadBtn = botChatDiv.querySelector('#downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+        const select = botChatDiv.querySelector('#fileSelect');
+        const fileUrl = select.options[select.selectedIndex].value;
+        window.open(fileUrl, '_blank');  // Redirect user to the selected URL
+    });
+
+    // Prevent default behavior of the button click (e.g., form submission)
+    return false;
+}
+
+else if (response === "CSE5") {
+    // Define the file options
+    const fileOptions = [
+        {  name: "DBMS", url: "https://example.com/page3"},
+        { name: "FLAT", url: "https://example.com/page1" },
+        { name: "S.E", url: "https://example.com/page2" },
+        {name : "C.N", url: "https:urlhere.com"}
+        
+    ];
+
+    // Build the HTML for the file options
+    let optionsHtml = "<p>Select a file to download:</p>";
+    optionsHtml += '<select id="fileSelect">';
+    fileOptions.forEach((file, index) => {
+        optionsHtml += `<option value="${file.url}">${file.name}</option>`;
+    });
+    optionsHtml += '</select>';
+
+    // Display the file options in the chat
+    botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="botimg.png" alt="chatbot-img">
+                            ${optionsHtml}
+                            <button id="downloadBtn">Download</button>
+                        </div>
+                    </div>`;
+
+    // Update the chat container
+    const botChatDiv = createChatElement(botResponse, "incoming");
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    // Add event listener to the download button
+    const downloadBtn = botChatDiv.querySelector('#downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+        const select = botChatDiv.querySelector('#fileSelect');
+        const fileUrl = select.options[select.selectedIndex].value;
+        window.open(fileUrl, '_blank');  // Redirect user to the selected URL
+    });
+
+    // Prevent default behavior of the button click (e.g., form submission)
+    return false;
+}
+
+else if (response === "CSE6") {
+    // Define the file options
+    const fileOptions = [
+        {name: "A.I", url: "https://example.com/page3"},
+        {name: "C.D", url: "https://example.com/page1" },
+        {name: "Cloud", url: "https://example.com/page2" },
+        {name : "SPM", url: "https:urlhere.com"}
+        
+    ];
+
+    // Build the HTML for the file options
+    let optionsHtml = "<p>Select a file to download:</p>";
+    optionsHtml += '<select id="fileSelect">';
+    fileOptions.forEach((file, index) => {
+        optionsHtml += `<option value="${file.url}">${file.name}</option>`;
+    });
+    optionsHtml += '</select>';
+
+    // Display the file options in the chat
+    botResponse = `<div class="chat-content">
+                        <div class="chat-details">
+                            <img src="botimg.png" alt="chatbot-img">
+                            ${optionsHtml}
+                            <button id="downloadBtn">Download</button>
+                        </div>
+                    </div>`;
+
+    // Update the chat container
+    const botChatDiv = createChatElement(botResponse, "incoming");
+    chatContainer.appendChild(botChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+
+    // Add event listener to the download button
+    const downloadBtn = botChatDiv.querySelector('#downloadBtn');
+    downloadBtn.addEventListener('click', () => {
+        const select = botChatDiv.querySelector('#fileSelect');
+        const fileUrl = select.options[select.selectedIndex].value;
+        window.open(fileUrl, '_blank');  // Redirect user to the selected URL
+    });
+
+    // Prevent default behavior of the button click (e.g., form submission)
+    return false;
+}
+
 
 
 
