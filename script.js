@@ -111,9 +111,9 @@ const handleOutgoingChat = (response) => {
 else if (response === "CSE1") {
     // Define the file options
     const fileOptions = [
-        {  name: "MATH-1", url: "https://example.com/page3"},
+        {  name: "BEE", url: "https://example.com/page3"},
         { name: "SEM.PHYSICS", url: "https://example.com/page1" },
-        { name: "BEE", url: "https://example.com/page2" },
+        { name: "Maths-1", url: "https://example.com/page2" },
         {name : "E.design", url: "https:urlhere.com"}
         
     ];
@@ -155,9 +155,9 @@ else if (response === "CSE1") {
 else if (response === "CSE2") {
     // Define the file options
     const fileOptions = [
-        {  name: "MATH-2", url: "https://example.com/page3"},
+        {  name: "PPS", url: "https://example.com/page3"},
         { name: "Chemistry-2", url: "https://example.com/page1" },
-        { name: "PPS", url: "https://example.com/page2" },
+        { name: "MATH-2", url: "https://example.com/page2" },
         {name : "English", url: "https:urlhere.com"}
         
     ];
