@@ -245,6 +245,7 @@ else if (response === "CSE4") {
     // Define the file options
     const fileOptions = [
         {  name: "D.Maths", url: "https://example.com/page3"},
+        {  name: "D.Maths", url: "https://example.com/page3"},
         { name: "C.O.A", url: "https://example.com/page1" },
         { name: "O.S", url: "https://example.com/page2" },
         {name : "U.H.V", url: "https:urlhere.com"}
