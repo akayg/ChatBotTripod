@@ -111,10 +111,10 @@ const handleOutgoingChat = (response) => {
 else if (response === "CSE1") {
     // Define the file options
     const fileOptions = [
-        {  name: "MATH-1", url: "https://example.com/page3"},
-        { name: "SEM.PHYSICS", url: "https://example.com/page1" },
+        {  name: "MATH1", url: "https://example.com/page3"},
+        { name: "S.PHY", url: "https://example.com/page1" },
         { name: "BEE", url: "https://example.com/page2" },
-        {name : "E.design", url: "https:urlhere.com"}
+        {name : "E.d", url: "https:urlhere.com"}
         
     ];
 
@@ -155,8 +155,8 @@ else if (response === "CSE1") {
 else if (response === "CSE2") {
     // Define the file options
     const fileOptions = [
-        {  name: "MATH-2", url: "https://example.com/page3"},
-        { name: "Chemistry-2", url: "https://example.com/page1" },
+        {  name: "MATH2", url: "https://example.com/page3"},
+        { name: "Chem.", url: "https://example.com/page1" },
         { name: "PPS", url: "https://example.com/page2" },
         {name : "English", url: "https:urlhere.com"}
         
@@ -199,11 +199,11 @@ else if (response === "CSE2") {
 else if (response === "CSE3") {
     // Define the file options
     const fileOptions = [
-        {  name: "MATH-3", url: "https://example.com/page3"},
-        { name: "D.Electronics", url: "https://example.com/page1" },
-        { name: "O.O.Programming", url: "https://example.com/page2" },
+        {  name: "MATH3", url: "https://example.com/page3"},
+        { name: "D.E", url: "https://example.com/page1" },
+        { name: "O.O.P", url: "https://example.com/page2" },
         {name : "D.S.A", url: "https:urlhere.com"},
-        {name : "Dev. of societies", url: "https:urlhere.com"}
+        {name : "D.o.s", url: "https:urlhere.com"}
         
     ];
 
@@ -244,7 +244,7 @@ else if (response === "CSE3") {
 else if (response === "CSE4") {
     // Define the file options
     const fileOptions = [
-        {  name: "Discrete Mathematics", url: "https://example.com/page3"},
+        {  name: "D.Maths", url: "https://example.com/page3"},
         { name: "C.O.A", url: "https://example.com/page1" },
         { name: "O.S", url: "https://example.com/page2" },
         {name : "U.H.V", url: "https:urlhere.com"}
