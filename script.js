@@ -158,7 +158,7 @@ else if (response === "CSE2") {
         {  name: "MATH2", url: "https://example.com/page3"},
         { name: "Chem.", url: "https://example.com/page1" },
         { name: "PPS", url: "https://example.com/page2" },
-        {name : "English", url: "https:urlhere.com"}
+        {name : "Eng", url: "https:urlhere.com"}
         
     ];
 
