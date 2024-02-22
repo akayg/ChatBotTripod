@@ -15,4 +15,4 @@ To set up the College Chatbot project locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/college-chatbot.git
+git clone https://github.com/akayg/ChatBotTripod.git
