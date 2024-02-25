@@ -23,3 +23,11 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const provider = new GoogleAuthProvider();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const submit =document.getElementById('submit').value;
+  submit.addEventListener("click",function(event){
+    event.preventDefault()
+    alert(5)
+  })
+
