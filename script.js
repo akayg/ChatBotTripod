@@ -17,7 +17,7 @@ const loadDataFromLocalStorage = () => {
                             <h1> Tripod</h1>
                             <p>Start a conversation and explore the power of AI.<br> Your chat history will be displayed here.</p>
                         </div>`
-                        chatInput.value = "Show menu";
+                        chatInput.value = "Hello";
                             // Check if it's the first time the user is visiting the page
     
         
